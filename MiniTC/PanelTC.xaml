@@ -1,0 +1,124 @@
+﻿<UserControl x:Class="MiniTC.PanelTC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MiniTC"
+             mc:Ignorable="d" 
+             d:DesignHeight="700" d:DesignWidth="400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="11*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="50"
+                Content="{
+                    Binding Path=LabelPathContent,
+                    Mode=OneWay,
+                    UpdateSourceTrigger=PropertyChanged,
+                    RelativeSource={
+                        RelativeSource Mode=FindAncestor, 
+                        AncestorType={x:Type UserControl}
+                    }
+                }"/>
+            <TextBox Grid.Column="1" VerticalAlignment="Center" IsEnabled="False" Margin="0,0,15,0"
+                Text="{
+                    Binding Path=TextBoxText,
+                    Mode=OneWay,
+                    UpdateSourceTrigger=PropertyChanged,
+                    RelativeSource={
+                        RelativeSource Mode=FindAncestor, 
+                        AncestorType={x:Type UserControl}
+                    }
+                }"/>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="40"
+                   Content="{
+                    Binding Path=LabelDriveContent,
+                    Mode=OneWay,
+                    UpdateSourceTrigger=PropertyChanged,
+                    RelativeSource={
+                        RelativeSource Mode=FindAncestor, 
+                        AncestorType={x:Type UserControl}
+                    }
+                }"/>
+            <ComboBox x:Name="ComboBoxWithDrives" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,15,0" Width="50"
+                DropDownOpened="ComboBox_DropDownOpened"   
+                ItemsSource="{
+                    Binding Path=ComboBoxItemsSource,
+                    Mode=OneWay,
+                    UpdateSourceTrigger=PropertyChanged,
+                    RelativeSource={
+                        RelativeSource Mode=FindAncestor, 
+                        AncestorType={x:Type UserControl}
+                    }
+                }"
+                SelectedIndex="{
+                    Binding Path=ComboBoxSelectedIndex,
+                    Mode=TwoWay,
+                    UpdateSourceTrigger=PropertyChanged,
+                    RelativeSource={
+                        RelativeSource Mode=FindAncestor, 
+                        AncestorType={x:Type UserControl}
+                    }
+                }"
+                SelectedItem="{
+                    Binding Path=ComboBoxSelectedItem,
+                    Mode=TwoWay,
+                    UpdateSourceTrigger=PropertyChanged,
+                    RelativeSource={
+                        RelativeSource Mode=FindAncestor, 
+                        AncestorType={x:Type UserControl}
+                    }
+                }"/>
+        </Grid>
+
+        <Grid Grid.Row="3">
+            <Border BorderThickness="1" BorderBrush="LightGray">
+                <ListBox
+                    ItemsSource="{
+                        Binding Path=ListBoxItemsSource,
+                        Mode=OneWay,
+                        UpdateSourceTrigger=PropertyChanged,
+                        RelativeSource={
+                            RelativeSource Mode=FindAncestor, 
+                            AncestorType={x:Type UserControl}
+                        }
+                    }"
+                    SelectedIndex="{
+                        Binding Path=ListBoxSelectedIndex,
+                        Mode=TwoWay,
+                        UpdateSourceTrigger=PropertyChanged,
+                        RelativeSource={
+                            RelativeSource Mode=FindAncestor, 
+                            AncestorType={x:Type UserControl}
+                        }
+                    }"
+                    SelectedItem="{
+                        Binding Path=ListBoxSelectedItem,
+                        Mode=TwoWay,
+                        UpdateSourceTrigger=PropertyChanged,
+                        RelativeSource={
+                            RelativeSource Mode=FindAncestor, 
+                            AncestorType={x:Type UserControl}
+                        }
+                    }"/>
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>
